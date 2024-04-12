@@ -9,7 +9,7 @@ FC Online 이용자를 위한 정보 검색 사이트입니다.<br/>
 썸네일이미지 넣을 예정
 
 ## 링크
-[바로가기](https://fc-on.vercel.com)
+[바로가기](https://fc-on.vercel.app/)
 
 ## 설치
 <details>
