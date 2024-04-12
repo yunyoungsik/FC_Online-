@@ -1,11 +1,15 @@
 # FC Online
 Next.js와 Nexon Onpen API를 사용하여 만든 FC Online 검색 사이트입니다.<br />
-FC Online 이용자를 위한 정보 검색 사이트입니다.
+FC Online 이용자를 위한 정보 검색 사이트입니다.<br/>
 
 ## 제작기간
 2024-03 ~ 제작중
 
 ## 미리보기
+썸네일이미지 넣을 예정
+
+## 링크
+[바로가기](https://fcon.vercel.com)
 
 ## 설치
 <details>
@@ -23,15 +27,15 @@ npm install bcrypt
 
 ## 기술 스택
 Front-end<br>
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
+<img src="https://img.shields.io/badge/nextdotjs-000000?style=flat-square&logo=nextdotjs&logoColor=white">
+<img src="https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=sass&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
 
 Back-end<br>
-<img src="https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=node.js&logoColor=white">
-<img src="https://img.shields.io/badge/nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white">
-
-Database<br>
 <img src="https://img.shields.io/badge/mongodb-47A248?style=for-the-badge&logo=mongodb&logoColor=white">
+
+Deploy<br>
+<img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"> 
 
 ## 기능 소개
 - Layout.js
