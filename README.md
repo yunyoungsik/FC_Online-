@@ -1,5 +1,5 @@
 # FC Online
-<img style="width: 100%" src="https://fcon.kr/images/meta/meta.jpg" alt="fcon.kr" />
+<img style="width: 100%" src="https://fcon.kr/images/meta/meta.webp" alt="fcon.kr" />
 Next.js와 Nexon Onpen API를 사용하여 만든 FC Online 검색 사이트입니다.<br />
 FC Online 이용자를 위한 정보 검색 사이트입니다.<br/>
 
@@ -147,7 +147,7 @@ NextAuth를 사용하여 Google회원가입을 구현했습니다.
       data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)) ? &lt;span&gt;Unranked&lt;/span&gt;
       공식경기(50)의 날짜가 올해인지 isAchievementDateThisYear 함수를 통해서 확인하고 올해가 아닌 경우 Unranked를 표시하고 올해인경우
 
-      &lt;Image src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) =&gt; item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.png`} width={100} height={100} alt="디비전 랭크" /&gt;
+      &lt;Image src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) =&gt; item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.webp`} width={100} height={100} alt="디비전 랭크" /&gt;
 
       사용자정보에서 랭크정보를 가져와 랭크점수를 divisionImg 함수에 전달해서 점수에 따라 디비전 랭크 이미지를 반환합니다.
 
