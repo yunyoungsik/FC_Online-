@@ -1,0 +1,239 @@
+.result__desc {
+  width: 100%;
+  padding: 8px 4px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--white);
+
+  .container {
+    > h2 {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--black600);
+    }
+    > ul {
+      > li {
+        font-size: 0.8rem;
+        color: var(--black400);
+      }
+    }
+  }
+}
+
+.rank__matchType {
+  background-color: var(--white);
+  overflow-x: auto;
+  white-space: nowrap;
+
+  > ul {
+    width: 100%;
+    display: flex;
+    padding: 4px;
+
+    > li {
+      margin-right: 4px;
+      padding: 4px 12px;
+      color: var(--black400);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        background-color: var(--black200);
+      }
+      &.active {
+        color: var(--green600);
+        background-color: var(--green100);
+      }
+    }
+  }
+}
+
+.rank__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--black200);
+
+  .rank__position {
+    display: flex;
+    align-items: center;
+
+    .position__select {
+      position: relative;
+
+      &:first-child {
+        margin-right: 4px;
+      }
+
+      @media (max-width: 1080px) {
+        margin-right: 4px;
+      }
+
+      > label {
+        position: absolute;
+        top: 50%;
+        right: 3px;
+        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        font-size: 0;
+        background-image: url(/images/svg/arrow2.svg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 10px;
+      }
+
+      > select {
+        height: 40px;
+        display: block;
+        border-radius: 5px;
+        text-align: left;
+        border: 1px solid var(--black100);
+        padding: 0 12px;
+        color: var(--black400);
+        transition: all 0.15s;
+
+        &:hover {
+          background-color: var(--black200);
+        }
+      }
+    }
+  }
+
+  .rank__search {
+    position: relative;
+    width: 250px;
+    height: 40px;
+
+    @media (max-width: 600px) {
+      flex-basis: 1 1 0%;
+    }
+
+    > label {
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-image: url(/images/svg/search2.svg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 20px;
+      font-size: 0;
+      z-index: 99;
+    }
+
+    > input {
+      width: 100%;
+      height: 100%;
+      padding: 0 12px 0 40px;
+      font-size: 0.875rem;
+      background-color: var(--black200);
+      border-radius: 5px;
+
+      &::placeholder {
+        color: var(--black600);
+        opacity: 0.5;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.rank__result {
+  width: 100%;
+  min-height: calc(100vh - 333px);
+  background-color: var(--white);
+  overflow: hidden;
+
+  .result__wrap {
+    overflow: auto;
+
+    > table {
+      width: 100%;
+      min-width: 600px;
+      border-spacing: 0;
+      border-collapse: collapse;
+      box-sizing: border-box;
+
+      th {
+        height: 2.5rem;
+        padding: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--black400);
+        text-align: center;
+        border-bottom: 1px solid var(--black200);
+      }
+      tbody {
+        tr {
+          transition: all 0.15s;
+          
+          &:hover {
+            background-color: var(--black100);
+          }
+
+          td {
+            height: 2.5rem;
+            padding: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--black600);
+            text-align: center;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--black200);
+
+            .imgWrap {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .playerImg {
+                width: 42px;
+                height: 42px;
+                display: block;
+                margin-right: 4px;
+
+                > img {
+                  width: 100%;
+                  height: 100%;
+                  display: block;
+                }
+              }
+
+              .name {
+                display: flex;
+                align-items: center;
+                color: var(--black);
+
+                > img {
+                  width: 16px;
+                  height: 13px;
+                  margin-right: 4px;
+                }
+              }
+            }
+
+            .raiting {
+              font-size: 0.7rem;
+              color: var(--black400);
+            }
+          }
+        }
+      }
+    }
+  }
+}
