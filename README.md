@@ -1,10 +1,14 @@
 # FC Online
 <img style="width: 100%" src="https://fcon.kr/images/meta/meta.webp" alt="fcon.kr" />
-Next.js와 Nexon Onpen API를 사용하여 만든 FC Online 검색 사이트입니다.<br />
-FC Online 이용자를 위한 정보 검색 사이트입니다.<br/>
+<br/>
+FC Online 검색 사이트 FCON.KR은 Next.js와 Nexon Open API를 기반으로 구축되었습니다.<br/>
+주요 기능은 FC 온라인 이용자를 위한 검색 기능으로, FC 온라인의 전적 및 선수 검색을 API를 활용하여 제공합니다.<br/>
+또한 MongoDB를 이용하여 공지사항 게시판을 구현하였으며, 이를 통해 운영자가 공지사항을 작성하고 사용자들에게 알릴 수 있습니다.<br/>
+선수를 판매할 때 발생하는 수수료를 미리 확인할 수 있는 계산기도 구현되어 있어 사용자들이 편리하게 이용할 수 있습니다.<br/>
+이를 통해 FC 온라인 이용자들에게 유용한 검색 및 정보 제공 서비스를 제공합니다.
 
 ## 제작기간
-2024-03-25 ~ 2024-04-14
+2024-03-25 ~ 2024-04-14[1차 배포 및 테스트 서비스 진행중]
 
 ## 링크
 [바로가기](https://fc-on.vercel.app/)
