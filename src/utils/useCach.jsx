@@ -34,7 +34,7 @@ const useCache = () => {
         }
         return updatedCache;
       });
-    }, 60000);
+    }, 600000);
 
     return () => clearInterval(interval);
   }, []);

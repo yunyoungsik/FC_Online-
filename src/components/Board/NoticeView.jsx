@@ -86,7 +86,7 @@ const NoticeView = ({ postId }) => {
             </li>
             <li>
               <div className="creator">
-                <Image src={`/images/rank/ico_${memberRank(data.creator?.role)}.png`} width={24} height={24} alt="회원등급" />
+                <Image src={`/images/rank/ico_${memberRank(data.creator?.role)}.webp`} width={18} height={18} alt="회원등급" />
                 <span onClick={() => handleUserClick && handleUserClick(data.creator?.username)}>{data.creator?.role === 'admin' ? '운영자' : data.creator.name}</span>
               </div>
             </li>

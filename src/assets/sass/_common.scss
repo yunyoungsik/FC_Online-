@@ -180,7 +180,7 @@
 /* 로딩 */
 .loading {
   width: 100%;
-  min-height: calc(100vh - 242px);
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,11 +266,6 @@
   position: relative;
 }
 
-.searchBar > form {
-  width: 100%;
-  height: 100%;
-}
-
 .searchBar > input {
   width: 100%;
   height: inherit;
@@ -342,6 +337,7 @@
 .ad__banner iframe {
   max-width: 100%;
   height: 100px;
+  border-radius: 5px;
 }
 
 .ad__banner2 {
@@ -353,6 +349,7 @@
   display: block;
   flex-flow: column;
   align-items: center;
+  border-radius: 5px;
   z-index: 99;
 }
 

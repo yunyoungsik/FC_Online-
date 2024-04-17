@@ -37,7 +37,7 @@ const MainSlider = () => {
                   <span>{slider.desc[0]}</span>
                   {slider.desc[1]}
                 </h3>
-                <Image src={slider.src} width={1280} height={264} alt={slider.desc.join(" ")} />
+                <Image src={slider.src} width={1080} height={225} alt={slider.desc.join(" ")} />
               </div>
             </Link>
           </SwiperSlide>

@@ -16,6 +16,6 @@ export const GET = async (req) => {
 
     return new Response(JSON.stringify({notices, count}), { status: 200 });
   } catch (error) {
-    return new Response('Notice Server Error', { status: 500 });
+    return new Response('Notice Server Error' , { status: 500 });
   }
 };

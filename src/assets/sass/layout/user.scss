@@ -246,6 +246,8 @@
           width: 100%;
           min-height: 100px;
           margin-bottom: 10px;
+          display: flex;
+          flex-wrap: wrap;
 
           &:last-child {
             margin-bottom: 0;
@@ -385,6 +387,7 @@
           }
 
           .match {
+            flex: 1 1 0%;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
@@ -392,7 +395,7 @@
             background-color: var(--white);
 
             .match__left {
-              width: 80px;
+              width: 75px;
               display: flex;
               flex-direction: column;
               gap: 8px;
@@ -453,11 +456,9 @@
               }
 
               .matchCenter__left {
+                width: 80px;
                 font-size: 0.75rem;
                 color: var(--black400);
-                @media (max-width: 600px) {
-                  flex-basis: 100px;
-                }
 
                 .rating {
                   font-size: 0.8rem;
@@ -470,9 +471,15 @@
               }
 
               .matchCenter__center {
+                width: 262px;
                 font-size: 0.8rem;
                 font-weight: bold;
                 color: var(--black800);
+
+                @media (max-width: 400px) {
+                  width: 150px;
+                }
+
                 @media (max-width: 300px) {
                   flex: 1 1 0%;
                 }
@@ -481,32 +488,61 @@
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  gap: 8px;
+                  gap: 4px;
                   // @media (max-width: 300px) {
                   //   flex-direction: column;
                   //   align-items: flex-end;
                   // }
 
                   > li {
-                    max-width: 100px;
-                    overflow: hidden;
-                    @media (max-width: 600px) {
-                      max-width: 60px;
+                    width: 80px;
+                    @media (max-width: 400px) {
+                      width: 49px;
                     }
 
-                    > a {
-                      display: block;
+                    &:first-child {
+                      display: flex;
+                      justify-content: flex-end;
+                    }
+
+                    > div {
+                      max-width: 100%;
+                      display: inline-block;
+                      position: relative;
+
+                      &:hover .ballon {
+                        display: inline-block;
+                        top: -35px;
+                        &::after {
+                          top: 25px;
+                        }
+                      }
+                      > .name {
+                        width: 100%;
+                        overflow: hidden;
+                      }
                     }
                   }
 
                   .score {
+                    width: 62px;
                     display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     gap: 4px;
                     padding: 4px 12px;
                     border-radius: 5px;
 
-                    @media (max-width: 300px) {
+                    @media (max-width: 600px) {
                       padding: 4px 8px;
+                    }
+
+                    > div {
+                      width: 13.5px;
+
+                      &:first-child {
+                        text-align: right;
+                      }
                     }
                   }
                 }
@@ -650,7 +686,7 @@
                   }
 
                   > table {
-                    max-width: 748px;
+                    min-width: 748px;
                     border-spacing: 0;
                     border-collapse: collapse;
 
@@ -717,6 +753,7 @@
                     font-weight: bold;
                     color: var(--black400);
                     text-align: center;
+                    word-break: keep-all;
                     border-bottom: 1px solid var(--black200);
                   }
 

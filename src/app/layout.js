@@ -8,13 +8,13 @@ import Provider from '@/context/SessionProvider';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
-const notoSans = Noto_Sans_KR({ subsets: ['latin'], variable: '--font-noto', weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'] });
+const notoSans = Noto_Sans_KR({ subsets: ['latin'], variable: '--font-noto', weight: ['400', '700'] });
 
 export const metadata = {
   generator: 'Next.js',
-  title: 'FC 온라인 검색 FCON.KR - FC 온라인 구단주와 선수 검색, 수수료 계산기',
-  description: 'FC 온라인 구단주와 선수 검색 FCON.KR, FCON.KR에서 구단주와 선수를 검색해 보세요. 선수를 판매 시 받는 금액을 수수료 계산기로 미리 확인해 보세요.',
-  keywords: ['FC Online, FC 온라인, FIFA Online, FIFA 온라인, 피파 온라인, 구단주 검색, 유저 검색, 선수 검색, 수수료 계산기'],
+  title: 'FC 온라인 전적 검색 FCON.KR - 구단주와 선수, 전적 검색, 수수료 계산기',
+  description: 'FC 온라인 구단주와 선수, 전적 검색 FCON.KR, 구단주와 선수, 전적을 검색하고 다양한 데이터를 확인하세요.',
+  keywords: ['FC 온라인 전적 검색, FC Online, FC 온라인, FIFA Online, FIFA 온라인, 피파 온라인, 구단주 검색, 유저 검색, 선수 검색, 전적 검색, 수수료 계산기'],
   authors: [{ name: 'Yun' }],
   creator: [{ name: 'Yun' }],
   publisher: [{ name: 'Yun' }],
@@ -25,13 +25,13 @@ export const metadata = {
     icon: 'favicon.svg',
   },
   metadataBase: new URL('https://fcon.kr/'),
-  images: 'https://fcon.kr/images/meta/meta.jpg',
+  images: 'https://fcon.kr/images/meta/meta.webp',
   openGraph: {
-    title: 'FC 온라인 검색 FCON.KR - FC 온라인 구단주와 선수 검색, 수수료 계산기',
-    description: 'FC 온라인 유저 선수 검색 FCON.KR, FCON.KR에서 구단주와 선수를 검색해 보세요. 선수를 판매 시 받는 금액을 수수료 계산기로 미리 확인해 보세요.',
+    title: 'FC 온라인 전적 검색 FCON.KR - FC 온라인 구단주와 선수, 전적 검색, 수수료 계산기',
+    description: 'FC 온라인 구단주와 선수, 전적 검색 FCON.KR, 구단주와 선수, 전적을 검색하고 다양한 데이터를 확인하세요.',
     url: 'https://fcon.kr/',
     siteName: 'FCON.KR',
-    images: 'https://fcon.kr/images/meta/meta.jpg',
+    images: 'https://fcon.kr/images/meta/meta.webp',
     locale: 'ko_KR',
     type: 'website',
     type: 'article',
@@ -61,9 +61,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FC 온라인 검색 FCON.KR - FC 온라인 구단주와 선수 검색, 수수료 계산기',
-    description: 'FC 온라인 검색 사이트, 유저 검색, 선수 검색 수수료 계산기FC 온라인 유저 선수 검색 FCON.KR, FCON.KR에서 구단주와 선수를 검색해 보세요. 선수를 판매 시 받는 금액을 수수료 계산기로 미리 확인해 보세요.',
-    images: ['https://fcon.kr/images/meta/meta.jpg'],
+    title: 'FC 온라인 전적 검색 FCON.KR - FC 온라인 구단주와 선수, 전적 검색, 수수료 계산기',
+    description: 'FC 온라인 구단주와 선수, 전적 검색 FCON.KR, 구단주와 선수, 전적을 검색하고 다양한 데이터를 확인하세요.',
+    images: ['https://fcon.kr/images/meta/meta.webp'],
   },
   googleAdsenseAccount: 'ca-pub-4313698984582740',
 };

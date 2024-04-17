@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const metadata = () => ({
-  title: `FCON.KR 이용약관 - FC 온라인 검색 FCON.KR`,
+  title: `FCON.KR 이용약관 - FC 온라인 전적 검색 FCON.KR`,
 });
 
 export default function page() {

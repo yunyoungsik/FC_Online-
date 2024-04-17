@@ -37,7 +37,7 @@ const NoticeList = ({ data, handleUserClick }) => {
                 </li>
                 <li>
                   <div className="creator">
-                    <Image src={`/images/rank/ico_${memberRank(post.creator?.role)}.png`} width={24} height={24} alt="회원등급" />
+                    <Image src={`/images/rank/ico_${memberRank(post.creator?.role)}.webp`} width={13} height={13} alt="회원등급" />
                     <span onClick={() => handleUserClick && handleUserClick(post.creator?.username)}>{post.creator?.role === 'admin' ? '운영자' : post.creator.name}</span>
                   </div>
                 </li>

@@ -1,10 +1,11 @@
 import React from 'react';
 import Players from '@/components/Rank/Players';
+import CoupangAd from '@/components/AD/CoupangAd';
 
 export const metadata = {
-  title: 'FC 온라인 선수 정보 검색 - FC 온라인 검색 FCON.KR',
+  title: 'FC 온라인 선수 정보 검색 - FC 온라인 전적 검색 FCON.KR',
   description: 'FC 온라인 TOP 10,000 랭커 유저가 사용한 선수의 최근 20경기 평균 스탯을 확인하세요.',
-}
+};
 
 export default function page({ params }) {
   const { matchtype, players, position } = params;
@@ -23,36 +24,44 @@ export default function page({ params }) {
       </div>
 
       <div className="container">
+        <aside className="ad__banner">
+          <CoupangAd />
+        </aside>
+      </div>
+
+      <div className="container">
         <div className="rank__result">
-          <table>
-            <colgroup>
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col style={{ width: '10%' }} />
-              <col />
-            </colgroup>
-            <thead>
-              <tr>
-                <th colSpan={2}>기본정보</th>
-                <th>포지션</th>
-                <th>사용횟수</th>
-                <th>득점 / 어시스트</th>
-                <th title="유효 슛 / 슛팅 수">슛</th>
-                <th title="패스 성공 / 패스 시도">패스</th>
-                <th title="드리블 성공 / 드리블 시도">드리블</th>
-                <th>블락</th>
-                <th>태클</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div className="result__wrap hideScroll">
+            <table>
+              <colgroup>
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col style={{ width: '10%' }} />
+                <col />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>기본정보</th>
+                  <th>포지션</th>
+                  <th>사용횟수</th>
+                  <th>득점 / 어시스트</th>
+                  <th title="유효 슛 / 슛팅 수">슛</th>
+                  <th title="패스 성공 / 패스 시도">패스</th>
+                  <th title="드리블 성공 / 드리블 시도">드리블</th>
+                  <th>블락</th>
+                  <th>태클</th>
+                </tr>
+              </thead>
+              <tbody>
                 <Players matchtype={matchtype} players={players} position={position} />
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </main>

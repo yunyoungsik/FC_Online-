@@ -25,7 +25,7 @@ const Winrate = ({ name, ouid, searchName, refresh }) => {
     try {
       const cachedData = getFromCache(`${decodeURIComponent(name)}_${matchType}`);
 
-      if (cachedData) {
+      if (cachedData && cachedData.value.length >= limit) {
         setData(cachedData.value);
         setLoading(false);
         return;

@@ -19,7 +19,6 @@ const User = ({ name }) => {
   const [lastUpdate, setLastUpdate] = useState(0);
   const [btnDisabled, setBtnDisabled] = useState(false);
 
-
   const divisionImg = (divisionPoint) => {
     const divisionMapping = {
       800: 'rank0',
@@ -141,7 +140,7 @@ const User = ({ name }) => {
 
             <div className="user__info">
               <div className="left">
-                <div className="rank">{!data.maxdivision || data.maxdivision.length === 0 || !data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)) ? <span>Unranked</span> : <Image src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.png`} width={100} height={100} alt="디비전 랭크" />}</div>
+                <div className="rank">{!data.maxdivision || data.maxdivision.length === 0 || !data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)) ? <span>Unranked</span> : <Image src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.webp`} width={72} height={72} alt="디비전 랭크" />}</div>
                 <div className="info">
                   <h2 className="ellipsis-test">{data.basic?.nickname}</h2>
                   <span>Lv.{data.basic?.level}</span>

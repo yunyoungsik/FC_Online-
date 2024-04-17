@@ -7,8 +7,15 @@ export default function Search() {
   const [name, setName] = useState('');
 
   const router = useRouter();
+
   const handleSearch = () => {
     router.push(`/user/${name}`);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
   };
 
   return (
@@ -17,21 +24,17 @@ export default function Search() {
         검색
       </label>
       <input
-        id='search'
-        name='search'
+        id="search"
+        name="search"
         type="text"
         placeholder="구단주명"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            handleSearch();
-          }
-        }}
+        onKeyDown={handleKeyDown}
       />
-      <button type="button" onClick={handleSearch}>
+      <button type="button" onClick={handleSearch}> {/* type을 submit으로 변경 */}
         검색
       </button>
-    </div>
+  </div>
   );
 }

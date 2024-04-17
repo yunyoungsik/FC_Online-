@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 
 const Calculator = () => {
-  const [sell, setSell] = useState("");
-  const [discount, setDiscount] = useState("");
+  const [sell, setSell] = useState('');
+  const [discount, setDiscount] = useState('');
   const [togglePcBox, setTogglePcBox] = useState(false);
   const [toggleTopBox, setToggleTopBox] = useState(false);
 
@@ -27,7 +27,7 @@ const Calculator = () => {
   return (
     <section className="calculator box right">
       <h2>수수료 계산기</h2>
-      <div className="calculator__wrap">
+      <form className="calculator__wrap">
         <div className="input__wrap">
           <div className="sell__wrap">
             <label htmlFor="sell">판매예정금액 </label>
@@ -48,8 +48,8 @@ const Calculator = () => {
             <div className="text">
               <span>프리미엄PC방(기본수수료 30% 할인)</span>
             </div>
-            <div className="switch-btn" style={!togglePcBox ? {backgroundColor: "var(--black200)"} : {backgroundColor: "var(--green)"} } onClick={handleTogglePcBox}>
-              <span className="ball" style={!togglePcBox ? { left: "0rem" } : { left: "2rem" }}></span>
+            <div className="switch-btn" style={!togglePcBox ? { backgroundColor: 'var(--black200)' } : { backgroundColor: 'var(--green)' }} onClick={handleTogglePcBox}>
+              <span className="ball" style={!togglePcBox ? { left: '0rem' } : { left: '2rem' }}></span>
             </div>
           </div>
 
@@ -57,8 +57,8 @@ const Calculator = () => {
             <div className="text">
               <span>TOP CLASS(기본수수료 20% 할인)</span>
             </div>
-            <div className="switch-btn" style={!toggleTopBox ? {backgroundColor: "var(--black200)"} : {backgroundColor: "var(--green)"}} onClick={handleToggleTopBox}>
-              <span className="ball" style={!toggleTopBox ? { left: "0rem" } : { left: "2rem" }}></span>
+            <div className="switch-btn" style={!toggleTopBox ? { backgroundColor: 'var(--black200)' } : { backgroundColor: 'var(--green)' }} onClick={handleToggleTopBox}>
+              <span className="ball" style={!toggleTopBox ? { left: '0rem' } : { left: '2rem' }}></span>
             </div>
           </div>
         </div>
@@ -66,33 +66,35 @@ const Calculator = () => {
         <div className="result">
           <ul>
             <li>
-              <span className='tit'>기본 수수료(40%)</span>
+              <span className="tit">기본 수수료(40%)</span>
               <span>-{basicCommission.toLocaleString()} BP</span>
             </li>
 
             <li>
-              <span className='tit'>수수료 할인 금액<strong>(총 {totalDiscount * 100}%)</strong></span>
+              <span className="tit">
+                수수료 할인 금액<strong>(총 {totalDiscount * 100}%)</strong>
+              </span>
               <span>+{(basicCommission * totalDiscount).toLocaleString()} BP</span>
             </li>
 
             <li>
-              <span className='tit'>개별 할인 금액({eachDiscount * 100}%)</span>
+              <span className="tit">개별 할인 금액({eachDiscount * 100}%)</span>
               <span>+{(basicCommission * eachDiscount).toLocaleString()} BP</span>
             </li>
 
             <li>
-              <span className='tit'>최종 수수료</span>
+              <span className="tit">최종 수수료</span>
               <span>{(basicCommission - (basicCommission * totalDiscount + basicCommission * eachDiscount)).toLocaleString()} BP</span>
             </li>
           </ul>
         </div>
-        <div className='total'>
+        <div className="total">
           <div className="total__wrap">
             <span>받는금액</span>
             <span>{(sell - (basicCommission - (basicCommission * totalDiscount + basicCommission * eachDiscount))).toLocaleString()} BP</span>
           </div>
         </div>
-      </div>
+      </form>
     </section>
   );
 };

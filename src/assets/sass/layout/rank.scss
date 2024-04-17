@@ -177,11 +177,12 @@
         color: var(--black400);
         text-align: center;
         border-bottom: 1px solid var(--black200);
+        word-break: keep-all;
       }
       tbody {
         tr {
           transition: all 0.15s;
-          
+
           &:hover {
             background-color: var(--black100);
           }

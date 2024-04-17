@@ -20,7 +20,7 @@
       max-width: 85vw;
     }
 
-    @media (max-width:600px) {
+    @media (max-width: 600px) {
       border-radius: 5px;
     }
 
@@ -38,7 +38,7 @@
         &:hover {
           background-color: var(--black900);
         }
-        
+
         @media (max-width: 600px) {
           padding: 0 50px 0 15px;
           border-radius: 5px;

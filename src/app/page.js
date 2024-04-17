@@ -1,6 +1,5 @@
 import React from 'react';
-import Main from './main/Main';
-
+import Main from '../components/Main/Main';
 
 export default function Home() {
 

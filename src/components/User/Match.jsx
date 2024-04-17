@@ -65,6 +65,39 @@ const Match = ({ name, ouid, searchName, refresh }) => {
     setShowDetailIndex(null);
   }, [matchType]);
 
+  // 중복 코드 함수화
+  const findMatchDetail = (match, searchName) => match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail;
+
+  // 조건문 간소화
+  const getMatchResult = (matchDetail) => {
+    switch (matchDetail?.matchEndType) {
+      case 0:
+        return matchDetail.matchResult;
+      case 1:
+        return '몰수승';
+      default:
+        return '몰수패';
+    }
+  };
+
+  const renderPlayerList = (players, teamIndex, spidData, seasonData, matchType) => {
+    return players.map((player, key) => {
+      const playerName = spidData.find((spid) => spid.id === player.spId)?.name; // 선수 이름 가져오기
+
+      return (
+        <li key={key}>
+          <Image src={seasonData.find((season) => season.seasonId === Math.floor(player.spId / 1000000))?.seasonImg} width={16} height={13} alt={`${playerName} ${player.name}`} />
+          <span className="ellipsis">
+            <Link href={`/stats/${matchType}/${player.spId}/${player.spPosition}`}>{playerName}</Link>
+          </span>
+          <div className="name ballon">
+            <p>{playerName}</p>
+          </div>
+        </li>
+      );
+    });
+  };
+
   if (loading) {
     return (
       <div className="loading">
@@ -92,7 +125,7 @@ const Match = ({ name, ouid, searchName, refresh }) => {
             </li>
           ) : (
             data.matches?.slice(0, limit).map((match, index) => (
-              <li key={index} className={match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.matchResult === '승' ? 'win' : match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.matchResult === '패' ? 'lose' : 'draw'}>
+              <li key={index} className={`match ${findMatchDetail(match, searchName)?.matchResult === '승' ? 'win' : findMatchDetail(match, searchName)?.matchResult === '패' ? 'lose' : 'draw'}`}>
                 <div className="match">
                   <div className="match__left">
                     <div className="matchLeft__top">
@@ -101,7 +134,7 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                     </div>
                     <div className="line50" />
                     <div className="matchLeft__bottom">
-                      <p className="matchResult">{match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.matchResult}</p>
+                      <p className="matchResult">{getMatchResult(findMatchDetail(match, searchName))}</p>
                     </div>
                   </div>
 
@@ -110,15 +143,15 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                       <ul>
                         <li className="rating">
                           <span>경기평점</span>
-                          {match.matchInfo?.find((item) => item.nickname === searchName)?.matchDetail.averageRating?.toFixed(2)}
+                          {findMatchDetail(match, searchName)?.averageRating?.toFixed(2)}
                         </li>
                         <li>
                           <span>컨트롤러</span>
-                          {match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.controller === 'keyboard' ? '키보드' : match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.controller === 'pad' ? '패드' : '기타'}
+                          {findMatchDetail(match, searchName)?.controller === 'keyboard' ? '키보드' : findMatchDetail(match, searchName)?.controller === 'pad' ? '패드' : '기타'}
                         </li>
                         <li>
                           <span>점유율</span>
-                          {match.matchInfo.find((item) => item.nickname === searchName)?.matchDetail.possession}
+                          {findMatchDetail(match, searchName)?.possession}
                           <span>%</span>
                         </li>
                       </ul>
@@ -127,9 +160,16 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                     <div className="matchCenter__center">
                       <ul>
                         <li>
-                          <Link className="ellipsis-test" href={`/user/${match.matchInfo[0]?.nickname}`}>
-                            {match.matchInfo[0]?.nickname}
-                          </Link>
+                          <div>
+                            <div className="name ellipsis-test">
+                              <Link className="ellipsis-test" href={`/user/${match.matchInfo[0]?.nickname}`}>
+                                <span className="ellipsis-test">{match.matchInfo[0]?.nickname}</span>
+                              </Link>
+                            </div>
+                            <div className="ballon">
+                              <p>{match.matchInfo[0]?.nickname}</p>
+                            </div>
+                          </div>
                         </li>
                         <li className="score">
                           <div className="score__left">
@@ -142,34 +182,26 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                             <p>{match.matchInfo[1]?.shoot.goalTotal}</p>
                           </div>
                         </li>
-                        <li className="ellipsis-test">
-                          <Link className="ellipsis-test" href={`/user/${match.matchInfo[1]?.nickname}`}>{match.matchInfo[1]?.nickname}</Link>
+                        <li>
+                          <div>
+                            <div className="name ellipsis-test">
+                              <Link className="ellipsis-test" href={`/user/${match.matchInfo[1]?.nickname}`}>
+                                <span className="ellipsis-test">{match.matchInfo[1]?.nickname}</span>
+                              </Link>
+                            </div>
+                            <div className="ballon">
+                              <p>{match.matchInfo[1]?.nickname}</p>
+                            </div>
+                          </div>
                         </li>
                       </ul>
                     </div>
 
                     <div className="matchCenter__right">
-                      <ul className="player">
-                        {/* 시즌아이콘 */}
-                        {match.matchInfo
-                          .find((item) => item.nickname === searchName)
-                          ?.player.map((el, key) => {
-                            const playerName = spidData.find((player) => player.id === el.spId)?.name;
-                            return (
-                              <li key={key}>
-                                <Image src={seasonData.find((season) => season.seasonId === Math.floor(el.spId / 1000000))?.seasonImg} width={16} height={13} alt={`${seasonData.find((season) => season.seasonId === Math.floor(el.spId / 1000000))?.className} ${el.name}`} />
-                                <span className="ellipsis">
-                                  <Link href={`/stats/${matchType}/${el.spId}/${el.spPosition}`}>{playerName}</Link>
-                                </span>
-                                <div className="name ballon">
-                                  <p>{playerName}</p>
-                                </div>
-                              </li>
-                            );
-                          })}
-                      </ul>
+                      <ul className="player">{renderPlayerList(match.matchInfo.find((item) => item.nickname === searchName)?.player || [], 0, spidData, seasonData, match.matchType)}</ul>
                     </div>
                   </div>
+
                   <div className={`match__right ${showDetailIndex === index ? 'active' : ''}`} onClick={() => handleDetail(index)}>
                     <Image src="/images/svg/arrow.svg" width={12} height={12} alt="화살표" />
                   </div>
