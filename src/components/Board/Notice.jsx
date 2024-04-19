@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import timeAgo from '@/utils/timeAgo';
 import NoticePagenation from './NoticePagenation';
@@ -10,6 +9,7 @@ import memberRank from '@/utils/memberRank';
 import CoupangAd from '../AD/CoupangAd';
 import { useScrollHandler } from '@/utils/useScrollAd';
 import CoupangAd2 from '../AD/CoupangAd2';
+import BasicImage from '../Img/BasicImage';
 
 const NoticeList = ({ data, handleUserClick }) => {
   return (
@@ -37,7 +37,7 @@ const NoticeList = ({ data, handleUserClick }) => {
                 </li>
                 <li>
                   <div className="creator">
-                    <Image src={`/images/rank/ico_${memberRank(post.creator?.role)}.webp`} width={13} height={13} alt="회원등급" />
+                    <BasicImage src={`/images/rank/ico_${memberRank(post.creator?.role)}.webp`} width={13} height={13} quality={70} alt="회원등급" />
                     <span onClick={() => handleUserClick && handleUserClick(post.creator?.username)}>{post.creator?.role === 'admin' ? '운영자' : post.creator.name}</span>
                   </div>
                 </li>

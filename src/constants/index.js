@@ -38,9 +38,9 @@ export const mainSlider = [
         src: "/images/slider/m_slider01.webp",
         desc: ["FCON.KR", "OPEN 2024.04.14"]
     },
-    {
-        link: "/",
-        src: "/images/slider/m_slider01.webp",
-        desc: ["FCON.KR", "테스트"]
-    },
+    // {
+    //     link: "/",
+    //     src: "/images/slider/m_slider01.webp",
+    //     desc: ["FCON.KR", "테스트"]
+    // },
 ]

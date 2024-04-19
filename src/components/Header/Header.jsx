@@ -100,7 +100,7 @@ export default function Header() {
     if (session?.user) {
       return (
         <div className="user__profile">
-          <Image src={session.user.image} width={37} height={37} className="rounded-full" alt="profile" onClick={() => setToggleDropdown(!toggleDropdown)} />
+          <Image unoptimized src={session.user.image} width={37} height={37} quality={70} className="rounded-full" alt="profile" onClick={() => setToggleDropdown(!toggleDropdown)} />
           {toggleDropdown && (
             <div className="dropdown">
               <div className="dropdown__wrap">

@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
 import { useData } from '@/context/DataContext';
 import PlayerImage from '../Img/PlayerImage';
+import BasicImage from '../Img/BasicImage';
 
 const Players = ({ matchtype, players, position }) => {
   const { spidData, seasonData, positionData } = useData();
@@ -53,7 +53,7 @@ const Players = ({ matchtype, players, position }) => {
                   <PlayerImage src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${player.spid}.png`} />
                 </div>
                 <div className="name">
-                  <Image src={seasonImg} width={16} height={13} alt={`${playerName} ${player.name}`} />
+                  <BasicImage src={seasonImg} width={16} height={13} quality={70} alt={`${playerName} ${player.name}`} />
                   <p>{playerName}</p>
                 </div>
               </div>

@@ -8,8 +8,8 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Link from 'next/link';
-import Image from 'next/image';
 import { mainSlider } from '@/constants';
+import BasicImage from '../Img/BasicImage';
 
 const MainSlider = () => {
   return (
@@ -21,12 +21,12 @@ const MainSlider = () => {
         }}
         modules={[Pagination, Autoplay, Navigation]}
         slidesPerView={'auto'}
-        navigation={true}
-        loop={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
+        // navigation={true}
+        // loop={true}
+        // autoplay={{
+        //   delay: 5000,
+        //   disableOnInteraction: false,
+        // }}
         className="mySwiper"
       >
         {mainSlider.map((slider, index) => (
@@ -37,7 +37,7 @@ const MainSlider = () => {
                   <span>{slider.desc[0]}</span>
                   {slider.desc[1]}
                 </h3>
-                <Image src={slider.src} width={1080} height={225} alt={slider.desc.join(" ")} />
+                <BasicImage src={slider.src} width={1080} height={225} quality={70} alt={slider.desc.join(" ")} />
               </div>
             </Link>
           </SwiperSlide>

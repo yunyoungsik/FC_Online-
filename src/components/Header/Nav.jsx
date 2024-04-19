@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { nav } from '@/constants';
 import { signIn, signOut } from 'next-auth/react';
+import BasicImage from '../Img/BasicImage';
 
 export default function Nav({ pathName, session, providers }) {
   // console.log(pathName);
@@ -58,7 +58,7 @@ export default function Nav({ pathName, session, providers }) {
         </ul>
       </nav>
       <div className="nav__mobile" id="navToggle" role="button" aria-label="Open Menu" aria-controls="primary-menu" aria-expanded={isShow ? 'true' : 'false'} onClick={toogleMenu}>
-        <Image src={isShow ? '/images/svg/close.svg' : '/images/svg/menu.svg'} width={24} height={24} alt="menu img" />
+        <BasicImage src={isShow ? '/images/svg/close.svg' : '/images/svg/menu.svg'} width={24} height={24} quality={70} alt="menu img" />
       </div>
     </>
   );

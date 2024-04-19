@@ -3,19 +3,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
-import Image from 'next/image';
 import timeAgo from '@/utils/timeAgo';
 
 import { useData } from '@/context/DataContext';
 import DetailInfo from './DetailInfo';
 import DetailTeam from './DetailTeam';
 import useCache from '@/utils/useCach';
+import MatchStats from './MatchStats';
+import BasicImage from '../Img/BasicImage';
 
 const Match = ({ name, ouid, searchName, refresh }) => {
   const { getFromCache, setToCache } = useCache();
   const { spidData, matchData, seasonData, positionData } = useData();
   const [data, setData] = useState(null);
-  // console.log(data)
+  // console.log(data);
   const [loading, setLoading] = useState(true);
   const [matchType, setMatchType] = useState(50);
   const [offset, setOffset] = useState(0);
@@ -81,12 +82,17 @@ const Match = ({ name, ouid, searchName, refresh }) => {
   };
 
   const renderPlayerList = (players, teamIndex, spidData, seasonData, matchType) => {
+    const positionPriority = [25, 21, 20, 22, 24, 26, 23, 27, 14, 15, 13, 16, 12, 10, 11, 9, 18, 19, 17, 5, 6, 4, 7, 3, 8, 2, 1, 0, 28];
+    players.sort((a, b) => {
+      return positionPriority.indexOf(parseInt(a.spPosition)) - positionPriority.indexOf(parseInt(b.spPosition));
+    });
+
     return players.map((player, key) => {
       const playerName = spidData.find((spid) => spid.id === player.spId)?.name; // 선수 이름 가져오기
 
       return (
         <li key={key}>
-          <Image src={seasonData.find((season) => season.seasonId === Math.floor(player.spId / 1000000))?.seasonImg} width={16} height={13} alt={`${playerName} ${player.name}`} />
+          <BasicImage src={seasonData.find((season) => season.seasonId === Math.floor(player.spId / 1000000))?.seasonImg} width={16} height={13} quality={70} alt={`${playerName} ${player.name}`} />
           <span className="ellipsis">
             <Link href={`/stats/${matchType}/${player.spId}/${player.spPosition}`}>{playerName}</Link>
           </span>
@@ -96,6 +102,25 @@ const Match = ({ name, ouid, searchName, refresh }) => {
         </li>
       );
     });
+  };
+
+  const convertTime = (utcString) => {
+    const dateParts = utcString.split('T');
+    const dateString = dateParts[0];
+    const timeParts = dateParts[1].split(':');
+    const hours = parseInt(timeParts[0]);
+    const minutes = parseInt(timeParts[1]);
+    const seconds = parseInt(timeParts[2]);
+
+    const timeDifference = 9 * 60 * 60 * 1000;
+
+    const utcDate = new Date(Date.UTC(parseInt(dateString.split('-')[0]), parseInt(dateString.split('-')[1]) - 1, parseInt(dateString.split('-')[2]), hours, minutes, seconds));
+
+    const koreaDate = new Date(utcDate.getTime() + timeDifference);
+    const koreaDateString = koreaDate.toISOString().replace('Z', '');
+
+    const formattedKoreaDateString = koreaDateString.slice(0, -4);
+    return formattedKoreaDateString;
   };
 
   if (loading) {
@@ -117,6 +142,9 @@ const Match = ({ name, ouid, searchName, refresh }) => {
           ))}
         </ul>
       </div>
+
+      <MatchStats data={data} searchName={searchName} spidData={spidData} seasonData={seasonData} />
+
       <div className="user__match">
         <ul>
           {!data || (data.matches && data.matches?.length) === 0 ? (
@@ -130,7 +158,16 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                   <div className="match__left">
                     <div className="matchLeft__top">
                       <p className="matchType">{matchData.find((item) => item.matchtype === match.matchType)?.desc}</p>
-                      <p className="matchDate">{timeAgo(match.matchDate)}</p>
+                      <div className="matchDate">
+                        <div className='matchDate-wrap'>
+                          <span>
+                            {timeAgo(convertTime(match.matchDate))}
+                          </span>
+                          <div className="ballon">
+                            <p>{convertTime(match.matchDate)}</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div className="line50" />
                     <div className="matchLeft__bottom">
@@ -203,7 +240,7 @@ const Match = ({ name, ouid, searchName, refresh }) => {
                   </div>
 
                   <div className={`match__right ${showDetailIndex === index ? 'active' : ''}`} onClick={() => handleDetail(index)}>
-                    <Image src="/images/svg/arrow.svg" width={12} height={12} alt="화살표" />
+                    <BasicImage src="/images/svg/arrow.svg" width={12} height={12} quality={70} alt="화살표" />
                   </div>
                 </div>
 

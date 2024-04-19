@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useData } from '@/context/DataContext';
 import timeAgo from '@/utils/timeAgo';
 import Match from './Match';
@@ -10,6 +9,7 @@ import useCache from '@/utils/useCach';
 import CoupangAd from '../AD/CoupangAd';
 import { useScrollHandler } from '@/utils/useScrollAd';
 import CoupangAd2 from '../AD/CoupangAd2';
+import BasicImage from '../Img/BasicImage';
 
 const User = ({ name }) => {
   const { divisionData, matchData } = useData();
@@ -98,8 +98,8 @@ const User = ({ name }) => {
     return new Date(dateString).getFullYear() === year;
   };
 
-   // 광고
-   useScrollHandler('.ad__banner2', 100);
+  // 광고
+  useScrollHandler('.ad__banner2', 100);
 
   if (loading) {
     return (
@@ -140,7 +140,7 @@ const User = ({ name }) => {
 
             <div className="user__info">
               <div className="left">
-                <div className="rank">{!data.maxdivision || data.maxdivision.length === 0 || !data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)) ? <span>Unranked</span> : <Image src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.webp`} width={72} height={72} alt="디비전 랭크" />}</div>
+                <div className="rank">{!data.maxdivision || data.maxdivision.length === 0 || !data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)) ? <span>Unranked</span> : <BasicImage src={`/images/rank/ico_${divisionImg(data.maxdivision.find((item) => item.matchType === 50 && isAchievementDateThisYear(item.achievementDate)).division)}.webp`} width={72} height={72} quality={80} alt="디비전 랭크" />}</div>
                 <div className="info">
                   <h2 className="ellipsis-test">{data.basic?.nickname}</h2>
                   <span>Lv.{data.basic?.level}</span>
@@ -167,12 +167,15 @@ const User = ({ name }) => {
           <aside className="ad__banner">
             <CoupangAd />
           </aside>
+
+          
         </div>
+
         <div className="user__right">
           <Match name={name} ouid={data.basic?.ouid} searchName={data.basic?.nickname} matchList={matchData} refresh={btnDisabled} />
         </div>
       </div>
-      
+
       <CoupangAd2 position={'left'} />
       <CoupangAd2 position={'right'} />
     </>

@@ -68,7 +68,7 @@ const Winrate = ({ name, ouid, searchName, refresh }) => {
       setLosses(lossesCount);
       const totalMatches = winsCount + drawsCount + lossesCount;
       if (totalMatches > 0) {
-        setWinRate((winsCount / totalMatches) * 100);
+        setWinRate(Math.round((winsCount / totalMatches) * 100));
       } else {
         setWinRate(0);
       }

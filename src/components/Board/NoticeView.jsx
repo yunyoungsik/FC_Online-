@@ -4,12 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import timeAgo from '@/utils/timeAgo';
 import memberRank from '@/utils/memberRank';
 import CoupangAd from '../AD/CoupangAd';
 import { useScrollHandler } from '@/utils/useScrollAd';
 import CoupangAd2 from '../AD/CoupangAd2';
+import BasicImage from '../Img/BasicImage';
 
 const NoticeView = ({ postId }) => {
   // console.log(postId)
@@ -86,7 +86,7 @@ const NoticeView = ({ postId }) => {
             </li>
             <li>
               <div className="creator">
-                <Image src={`/images/rank/ico_${memberRank(data.creator?.role)}.webp`} width={18} height={18} alt="회원등급" />
+                <BasicImage src={`/images/rank/ico_${memberRank(data.creator?.role)}.webp`} width={18} height={18} quality={70} alt="회원등급" />
                 <span onClick={() => handleUserClick && handleUserClick(data.creator?.username)}>{data.creator?.role === 'admin' ? '운영자' : data.creator.name}</span>
               </div>
             </li>
