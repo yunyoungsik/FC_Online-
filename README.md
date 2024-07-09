@@ -11,7 +11,7 @@ FC Online 검색 사이트 FCON.KR은 Next.js와 Nexon Open API를 기반으로 
 2024-03-25 ~ 2024-04-14[1차 배포 및 테스트 서비스 진행중]
 
 ## 링크
-[바로가기](https://fc-on.vercel.app/)
+[바로가기](https://fcon.kr)
 
 ## 개인작업
 |윤영식|
